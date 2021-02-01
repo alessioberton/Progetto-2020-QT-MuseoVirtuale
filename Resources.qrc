@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+		<!-- Icona/Opere -->
+        <file>img/appIcona.png</file>
+		
+		<!-- Sculture -->
+        <file>img/sculturaMarmo.jpg</file>	
+		<file>img/sculturaAvorio.jpg</file>	
+		<file>img/sculturaPietra.jpg</file>	
+		<file>img/sculturaArgilla.jpg</file>	
+
+		
+		<!-- Dipinti -->
+		<file>img/dipintoAcquerello.jpg</file>	
+		<file>img/dipintoOlio.jpg</file>	
+		<file>img/dipintoCera.jpg</file>	
+		<file>img/dipintoPastello.jpg</file>	
+
+		<!-- Mosaici -->
+		<file>img/mosaicoOro.jpg</file>
+		<file>img/mosaicoPietra.jpg</file>
+		<file>img/mosaicoVetro.jpg</file>
+		<file>img/mosaicoMarmo.jpg</file>
+		
+		<!-- Quadri -->
+		<file>img/quadroOro.jpg</file>
+		<file>img/quadroRame.jpg</file>
+		<file>img/quadroLegno.jpg</file>
+		<file>img/quadroArgento.jpg</file>
+		
+        <!-- Dati -->
+        <file>data/data.json</file>
+    </qresource>
+</RCC>
