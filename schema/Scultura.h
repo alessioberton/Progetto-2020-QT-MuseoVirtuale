@@ -5,7 +5,6 @@
 #include "QDateTime"
 
 class Scultura : public Opera {
-public:
 private:
   SculturaMaterial sculturaMaterial;
 public:
@@ -18,16 +17,13 @@ public:
   bool hasValue() const override;
   // Il prezzo della Scultura è calcolato al prezzo dell' opera + il materiale * le dimensioni
   double calcuateRealPrice() const override;
-
+  QJsonObject serialize() const override;
+  void deserialize(const QJsonObject& obj) override ;
   static SculturaMaterial fromStringToEnum(const QString &);
   // Getter
   QString getSculturaMaterialString() const;
   // Setter
   void setSculturaMaterial(SculturaMaterial);
-
-  // Methods
-  QJsonObject serialize() const override;
-  void deserialize(const QJsonObject& obj) override ;
 };
 
 #endif // DIPINTO_H

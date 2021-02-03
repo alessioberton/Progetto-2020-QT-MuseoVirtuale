@@ -1,7 +1,9 @@
 <RCC>
     <qresource prefix="/">
 		<!-- Icona/Opere -->
-        <file>img/appIcona.png</file>
+        <file>img/appIcona.jpg</file>
+		<file>img/noOpera.jpg</file>
+
 		
 		<!-- Sculture -->
         <file>img/sculturaMarmo.jpg</file>	

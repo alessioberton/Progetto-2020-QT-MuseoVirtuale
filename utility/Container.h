@@ -8,31 +8,25 @@ private:
   int size;
   int capacity;
   T* array;
-
   //Utility
   void deepCopy(T*, int, int);
   void deepCopy(T*, T*, int, int);
   void resize();
   void deleteAnElement(int);
-
   int getCapacity() const;
-
 public:
   Container();
   Container(const Container&);
   ~Container();
-
   //Getters
   bool isFull() const;
   bool isEmpty() const;
   int getSize() const;
-
   Container operator+(const Container&) const;
   Container& operator=(const Container&);
   bool operator==(const Container&) const;
   bool operator!=(const Container&) const;
   T& operator[](int i) const;
-
   void clear();
   void merge(const Container<T>&);
   T search(int) const;
@@ -41,16 +35,13 @@ public:
   void remove(const T&);
   void remove(int);
 
-
-
   class const_iterator {
-      friend class Container <T>;
+      friend class Container<T>;
     private:
       const T* t;
       bool pastTheEnd;
       // convertitore "privato" T* => const_iterator
       const_iterator(T*, bool pte = false);
-
     public:
       const_iterator();
       const_iterator& operator++();
@@ -62,9 +53,6 @@ public:
       const T& operator*() const;
       const T* operator->() const;
     };
-
-
-
 };
 
 template<class T>
@@ -190,17 +178,12 @@ void Container<T>::insert(const T& obj) {
 }
 
 template<class T>
-void Container<T>::remove(const T& obj) {
-  if (size > 0) { int index = search(obj); if (index != -1) { deleteAnElement(index); } }
-}
+void Container<T>::remove(const T& obj) { if (size > 0) { int index = search(obj); if (index != -1) { deleteAnElement(index); } } }
 
 template<class T>
-void Container<T>::remove(int index) {
-    if (index < size) { deleteAnElement(index); }
-}
+void Container<T>::remove(int index) { if (index < size) { deleteAnElement(index); } }
 
 //  CONST ITERATOR
-
 template<class T>
 Container<T>::const_iterator::const_iterator(T *p, bool pte): t(p), pastTheEnd(pte) {}
 

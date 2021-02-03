@@ -16,10 +16,8 @@ public:
   bool hasValue() const override;
   // Il prezzo del Dipinto è calcolato al prezzo dell' opera + il materiale * le dimensioni
   double calcuateRealPrice() const override;
-
   QJsonObject serialize() const override;
-  void deserialize(const QJsonObject& obj) override ;
-
+  void deserialize(const QJsonObject&) override ;
   static MosaicoMaterial fromStringToEnum(const QString &);
   // Getter
   QString getMosaicoMaterialString() const;
@@ -27,7 +25,6 @@ public:
   void setMosaicoMaterial(MosaicoMaterial);
 private:
   MosaicoMaterial mosaicoMaterial;
-
 };
 
 #endif // MOSAICO_H

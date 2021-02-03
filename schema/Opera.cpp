@@ -1,7 +1,7 @@
 #include "Opera.h"
 
-Opera::Opera(const QString &_imgPath, const QString &_name, const QString &_author,u_int _height, u_int _width, const QDateTime & _creationDate, const QDateTime & _expositionDate) : imgPath(_imgPath),
-  name(_name) , author(_author), height(_height), width(_width), price(0.0),
+Opera::Opera(const QString &_imgPath, const QString &_name, const QString &_author,u_int _height, u_int _width, const QDateTime & _creationDate, const QDateTime & _expositionDate) :
+  name(_name) ,imgPath(_imgPath), author(_author), height(_height), width(_width), price(0.0),
   creationDate(_creationDate), expositionDate(_expositionDate) {}
 
 double Opera::calcuateRealPrice() const {

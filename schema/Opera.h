@@ -29,22 +29,17 @@ public:
   Opera(const QString &, const QString &, const QString &, u_int, u_int, const QDateTime &, const QDateTime &);
   virtual ~Opera() = default;
   virtual Opera *clone() const = 0;
-  // Ritorna la categoria dell' oggetto
+  // Ritorna il nome della classe
   virtual QString getCategory() const = 0;
   // Opera ha valore se Dipinto fatta di olio/cera/pastelli o Scultura in marmo/terracotta/pietra/avorio
   virtual bool hasValue() const = 0;
-  // il prezzo dell' Opera dipende dal valore, se è in vendita, dal suo materiale, dalle dimensioni, del soggetto esposto
+  // il prezzo dell' Opera dipende dal valore, se è in vendita, dal suo materiale, dalle dimensioni
   virtual double calcuateRealPrice() const;
-
-  // Methods
   virtual QJsonObject serialize() const;
-  virtual void deserialize(const QJsonObject& obj);
-
-  // Opera è esposta se importante o realizzata negli utimi 10 anni, altrimenti no ed è nel rispostiglio virtuale
+  virtual void deserialize(const QJsonObject&);
+  // Opera è in vendita se importante o realizzata negli utimi 10 anni
   bool isOnSale() const;
-
-  bool operator==(const Opera& opera) const;
-
+  bool operator==(const Opera&) const;
   // Getter
   QString getImgPath() const;
   QString getName() const;
@@ -54,7 +49,6 @@ public:
   u_int getHeight() const;
   u_int getWidth() const;
   double getPrice() const;
-
   // Setter
   void setImgPath(const QString&);
   void setName(const QString&);

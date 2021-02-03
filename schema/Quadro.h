@@ -4,7 +4,6 @@
 #include "Dipinto.h"
 
 class Quadro : public Dipinto {
-public:
 private:
   QuadroMaterial quadroMaterial;
 public:
@@ -17,16 +16,13 @@ public:
   bool hasValue() const override;
   // Il prezzo del Quadro è calcolato al prezzo dell' Dipinto + un sovrapprezzo in base al soggetto pittorico
   double calcuateRealPrice() const override;
-
+  QJsonObject serialize() const override;
+  void deserialize(const QJsonObject&) override ;
   static QuadroMaterial fromStringToEnum(const QString &);
   // Getter
   QString getQuadroMaterialString() const;
   // Setter
   void setQuadroMaterial(QuadroMaterial);
-
-  // Methods
-  QJsonObject serialize() const override;
-  void deserialize(const QJsonObject& obj) override ;
 };
 
 #endif // QUADRO_H

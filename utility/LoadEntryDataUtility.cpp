@@ -10,14 +10,14 @@
 void LoaDdataEntryUtility::retrieveStartData(Model& model) {
   QFile inputFile(":/data/data.json");
   if (inputFile.open(QIODevice::ReadOnly)) {
-    QByteArray dataArray = inputFile.readAll();
+    const QByteArray dataArray = inputFile.readAll();
     inputFile.close();
-    QJsonDocument docJson = QJsonDocument::fromJson(dataArray);
-    auto arrayJson = docJson.array();
+    const QJsonDocument docJson = QJsonDocument::fromJson(dataArray);
+    const auto arrayJson = docJson.array();
     foreach (const QJsonValue& value, arrayJson) {
-      QJsonObject obj = value.toObject();
+      const QJsonObject obj = value.toObject();
       if (obj.contains("category") && obj["category"].isString()) {
-	QString charClass = obj["category"].toString();
+	const QString charClass = obj["category"].toString();
 	DeepPtr<Opera> opera;
 	if (charClass == "Scultura") opera = new Scultura();
 	else if (charClass == "Quadro") opera = new Quadro();

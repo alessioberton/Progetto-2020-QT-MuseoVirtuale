@@ -16,16 +16,13 @@ public:
   bool hasValue() const override;
   // Il prezzo del Dipinto è calcolato al prezzo dell' opera + il materiale * le dimensioni
   double calcuateRealPrice() const override;
-
   QJsonObject serialize() const override;
-  void deserialize(const QJsonObject& obj) override ;
-
+  void deserialize(const QJsonObject&) override ;
   static DipintoType fromStringToEnum(const QString &);
   // Getter
   QString getDipintoTypeString() const;
   // Setter
   void setDipintoType(DipintoType);
-
 };
 
 #endif // DIPINTO_H
