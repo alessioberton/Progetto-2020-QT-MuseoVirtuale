@@ -1,10 +1,6 @@
 #include "Museovirtuale.h"
 #include "Controller.h"
 
-#include <iostream>
-
-using namespace std;
-
 // "METODI DI UTILITA'"
 void MuseoVirtuale::setController(Controller *c) { controller = c; }
 
@@ -29,9 +25,8 @@ void MuseoVirtuale::updateMidLayout(QHBoxLayout* layout, Opera* op) {
 
 void MuseoVirtuale::updateEntireView() {
   resetLayout(midInfoLayout);
-  reBuildLayout();
-  updateList("Tutte", false, listOperaContainer);
-  mainLayout->update();
+  listOperaContainer = controller->getOperaContainer();
+  changeListener();
 }
 
 void MuseoVirtuale::reBuildLayout() {
@@ -49,7 +44,6 @@ void MuseoVirtuale::reBuildLayout() {
     mainLayout->addLayout(midLayout);
   }
 }
-
 
 void MuseoVirtuale::insertImg(Opera* operaToDispay){
   operaImg.load(operaToDispay->getImgPath());
@@ -147,7 +141,9 @@ MuseoVirtuale::MuseoVirtuale(Controller* c, QWidget *parent) : QMainWindow(paren
   createTopLayout();
   buildMidLayout();
   createBottomLayout();
-  updateList("Tutte", false, listOperaContainer);
+  for (int i = 0; i < listOperaContainer.getSize(); i++) {
+    operaList->addItem(new QListWidgetItem(listOperaContainer[i]->getName()));
+  }
   appLayout->addLayout(mainLayout);
   appLayout->setSpacing(0);
   QWidget* mainWidget = new QWidget(this);
@@ -183,12 +179,11 @@ void MuseoVirtuale::createTopLayout() {
   midInfoLayout = new QHBoxLayout;
   midInfoWidget = new QWidget;
   stackedWidget = new QStackedWidget;
-  operaLabel = new QLabel;
-  if (!listOperaContainer.isEmpty()) insertImg(listOperaContainer[0]->clone());
-  operaImageLayout = new QHBoxLayout;
-  operaImageLayout->addWidget(operaLabel);
   operaList = new QListWidget;
   operaBox = new QScrollArea;
+  operaLabel = new QLabel;
+  operaImageLayout = new QHBoxLayout;
+  if (!listOperaContainer.isEmpty()) insertImg(listOperaContainer[0]->clone());
   operaBox->setWidget(operaList);
   operaBox->setWidgetResizable(true);
   operaBox->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -202,10 +197,45 @@ void MuseoVirtuale::createTopLayout() {
     if (stackedWidget->isHidden()) stackedWidget->show();
     stackedWidget->setCurrentWidget(midInfoWidget);
   });
+  operaImageLayout->addWidget(operaLabel);
   topLayout->addLayout(operaImageLayout);
   topRightLayout->addWidget(operaBox);
   topLayout->addLayout(topRightLayout);
   mainLayout->addLayout(topLayout);
+}
+
+void MuseoVirtuale::buildMidLayout(const QString& operaName) {
+  authorInfoLayout = new QFormLayout;
+  operaInfoLayout = new QFormLayout;
+  galleryInfoLayout = new QFormLayout;
+  listOperaContainer = controller->getOperaContainer();
+  if (!listOperaContainer.isEmpty()) {
+    if (operaName == "") { //SITUAZIONE INIZIALE
+      inserisciDescrizioneOpera(listOperaContainer[0]->clone());
+      updateForm();
+      mainLayout->addLayout(midLayout);
+    } else { // UPDATE FORM
+      const auto listaOpereByName = controller->searchByTpeNameSale(typeBox->currentText(), operaName,
+								   showBox->currentText() == "No" ? false : true);
+      bool continua = true;
+      for (int i = 0; i < listaOpereByName.getSize() && continua ; i++ ) {
+	if (listaOpereByName[i]->getName() == operaName) {
+	  const auto opera = listaOpereByName[i]->clone();
+	  inserisciDescrizioneOpera(opera);
+	  operaImg.load(opera->getImgPath());
+	  operaLabel->setPixmap(operaImg);
+	  continua = !continua;
+	}
+      }
+      operaImageLayout->update();
+      updateForm();
+      mainLayout->update();
+    }
+  } else {
+    authorInfoLayout->addRow("Attenzione ", new QLabel("Nessuna opera in mostra"));
+    updateForm();
+    mainLayout->addLayout(midLayout);
+  }
 }
 
 void MuseoVirtuale::changeListener() {
@@ -227,7 +257,7 @@ void MuseoVirtuale::createBottomLayout() {
   // Type
   QLabel* typeLabel = new QLabel("Opera");
   typeLabel->setStyleSheet("font-weight: bold; color: black; margin-top: 10px");
-  typeBox->setFixedSize(170,25);
+  typeBox->setFixedSize(170, 25);
   typeBox->addItem("Tutte");
   typeBox->addItem("Dipinto");
   typeBox->addItem("Quadro");
@@ -237,15 +267,25 @@ void MuseoVirtuale::createBottomLayout() {
   // Show
   QLabel* showLabel = new QLabel("Solo in vendita");
   showLabel->setStyleSheet("font-weight: bold; color: black; margin-top: 10px");
-  showBox->setFixedSize(170,25);
+  showBox->setFixedSize(170, 25);
   showBox->addItem("No");
   showBox->addItem("Si");
   connect(showBox, &QComboBox::currentTextChanged, [this]() { changeListener(); });
   // Reset
   QPushButton* resetButton = new QPushButton("Rimuovi filtri");
   resetButton->setStyleSheet("font-weight: bold; color: black; margin-top: 10px");
-  resetButton->setFixedSize(170,30);
+  resetButton->setFixedSize(170, 40);
   connect(resetButton, SIGNAL(clicked()), this, SLOT(resetFilters()));
+  // DELETE
+  QPushButton* deleteButton = new QPushButton("CANCELLA OPERA");
+  deleteButton->setStyleSheet("font-weight: bold; color: black; margin-top: 15px");
+  deleteButton->setFixedSize(170, 60);
+  connect(deleteButton, &QPushButton::clicked, [this]() {
+    if (operaList->currentRow() != -1){
+      const QString operaName = operaList->currentItem()->text();
+      controller->deleteBtnClicked(controller->findOperaGivenName(operaName));
+    } else showErrorMessage("Nessuna opera selezionata!");
+  });
   bottomLayout->addWidget(searchLabel);
   bottomLayout->addWidget(searchBox);
   bottomLayout->addWidget(typeLabel);
@@ -253,42 +293,10 @@ void MuseoVirtuale::createBottomLayout() {
   bottomLayout->addWidget(showLabel);
   bottomLayout->addWidget(showBox);
   bottomLayout->addWidget(resetButton);
-  bottomLayout->setContentsMargins(18,0,0,120);
+  bottomLayout->addWidget(deleteButton);
+  bottomLayout->setContentsMargins(350,0,0,0);
   bottomLayout->addStretch();
   mainLayout->addLayout(bottomLayout);
-}
-
-void MuseoVirtuale::buildMidLayout(const QString& operaName) {
-  authorInfoLayout = new QFormLayout;
-  operaInfoLayout = new QFormLayout;
-  galleryInfoLayout = new QFormLayout;
-  listOperaContainer = controller->getOperaContainer();
-  if (!listOperaContainer.isEmpty()) {
-    if (operaName == "") { //SITUAZIONE INIZIALE
-      inserisciDescrizioneOpera(listOperaContainer[0]->clone());
-      updateForm();
-      mainLayout->addLayout(midLayout);
-    } else { // UPDATE FORM
-      const auto listaOpereByName = controller->searchByTpeAndName(typeBox->currentText(), operaName);
-      bool continua = true;
-      for (int i = 0; i < listaOpereByName.getSize() && continua ; i++ ) {
-	if (listaOpereByName[i]->clone()->getName() == operaName) {
-	  const auto opera = listaOpereByName[i]->clone();
-	  inserisciDescrizioneOpera(opera);
-	  operaImg.load(opera->getImgPath());
-	  operaLabel->setPixmap(operaImg);
-	  continua = !continua;
-	}
-      }
-      operaImageLayout->update();
-      updateForm();
-      mainLayout->update();
-    }
-  } else {
-    authorInfoLayout->addRow("Attenzione ", new QLabel("Nessuna opera in mostra"));
-    updateForm();
-    mainLayout->addLayout(midLayout);
-  }
 }
 
 void MuseoVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
@@ -344,7 +352,6 @@ void MuseoVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
     const Dipinto* dipinto = static_cast<Dipinto*>(singleOpera);
     if (dipinto) {
       infoOpera->setText("Informazioni Dipinto");
-      operaInfoLayout->addRow(infoOpera);
       operaInfoLayout->addRow("Nome dipinto: ", new QLabel(dipinto->getName()));
       operaInfoLayout->addRow("Altezza in centimetri: ", new QLabel(QString::number(1.0 * dipinto->getHeight())));
       operaInfoLayout->addRow("Larghezza in centimetri: ", new QLabel(QString::number(1.0 * dipinto->getWidth())));
@@ -359,7 +366,7 @@ void MuseoVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
 
 void MuseoVirtuale::buildList(const QString& nameStr, const QString& showStr, bool typeSale) {
   resetNameList();
-  auto opereToChose = controller->searchByTpeAndName(showStr, nameStr);
+  auto opereToChose = controller->searchByTpeNameSale(showStr, nameStr, showBox->currentText() == "No" ? false : true);
   if (!opereToChose.isEmpty()){
     showList(showStr, typeSale, opereToChose);
     deleteList(nameStr);
@@ -415,12 +422,13 @@ void MuseoVirtuale::showList(const QString& str, bool typeSale, Container<DeepPt
 
 void MuseoVirtuale::updateList(const QString& typeOpera, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
   for (int i = 0; i < opereToShow.getSize(); i++) {
-    const Opera* deepOpera = opereToShow[i]->clone();
+    const auto deepOpera = opereToShow[i]->clone();
     if (!typeSale) operaList->addItem(new QListWidgetItem(deepOpera->getName()));
     else if (typeSale) if (deepOpera->isOnSale()) operaList->addItem(new QListWidgetItem(deepOpera->getName()));
   }
   if (operaList->count() > 0) {
-    updateMidLayout(midInfoLayout,controller->searchByTpeAndName(typeOpera, operaList->item(0)->text())[0]->clone() );
+    updateMidLayout(midInfoLayout, controller->searchByTpeNameSale(typeOpera,
+			      operaList->item(0)->text(), showBox->currentText() == "No" ? false : true)[0]->clone());
   } else {
     operaImg.load(":/img/noOpera.jpg");
     operaLabel->setPixmap(operaImg);

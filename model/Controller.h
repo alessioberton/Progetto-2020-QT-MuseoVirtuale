@@ -24,12 +24,13 @@ public:
   Container<DeepPtr<Opera>> getOperaContainer() const;
   unsigned int countSameAuthor(const QString&) const;
   DeepPtr<Opera> searchClicked(int) const;
-  Container<DeepPtr<Opera>> searchByTpeAndName(const QString& = "", const QString& = "") const;
+  Container<DeepPtr<Opera>> searchByTpeNameSale(const QString& = "", const QString& = "", bool = false) const;
+  int findOperaGivenName(const QString&) const;
 public slots:
   void saveData() const;
   void loadData() const;
-  void deleteBtnClicked(Opera*) const;
-  // Codice pronto in caso l'applicazione permetta di salvare opere. Avrei sforato le 50 ore implementando e testando questa funzione
+  void deleteBtnClicked(int) const;
+  // Codice "pronto" in caso l'applicazione permetta di salvare opere. Avrei sforato sicuramente le 50 ore implementando e testando questa funzione
   void saveBtnClicked(Opera*) const;
 };
 

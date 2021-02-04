@@ -9,7 +9,6 @@
 #include <QJsonObject>
 #include <string>
 
-
 typedef unsigned int u_int;
 using namespace EnumCollection;
 
@@ -28,8 +27,9 @@ public:
   Opera() = default;
   Opera(const QString &, const QString &, const QString &, u_int, u_int, const QDateTime &, const QDateTime &);
   virtual ~Opera() = default;
+  // Ritorna copia profonda dell' oggetto
   virtual Opera *clone() const = 0;
-  // Ritorna il nome della classe
+  // Ritorna il nome dell' oggetto istanziato
   virtual QString getCategory() const = 0;
   // Opera ha valore se Dipinto fatta di olio/cera/pastelli o Scultura in marmo/terracotta/pietra/avorio
   virtual bool hasValue() const = 0;
@@ -37,7 +37,7 @@ public:
   virtual double calcuateRealPrice() const;
   virtual QJsonObject serialize() const;
   virtual void deserialize(const QJsonObject&);
-  // Opera è in vendita se importante o realizzata negli utimi 10 anni
+  // Opera è in vendita se importante e realizzata negli utimi 10 anni
   bool isOnSale() const;
   bool operator==(const Opera&) const;
   // Getter

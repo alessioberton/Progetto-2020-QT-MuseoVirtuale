@@ -4,18 +4,17 @@
 template<class T>
 class DeepPtr {
 private:
-    T* ptr;
-
+  T* ptr;
 public:
-    DeepPtr(const DeepPtr&);
-    DeepPtr(T* p = nullptr);
-    ~DeepPtr();
+  DeepPtr(const DeepPtr&);
+  DeepPtr(T* p = nullptr);
+  ~DeepPtr();
 
-    DeepPtr& operator=(const DeepPtr&);
-    bool operator==(const DeepPtr&) const;
-    bool operator!=(const DeepPtr&) const;
-    T& operator*() const;
-    T* operator->() const;
+  DeepPtr& operator=(const DeepPtr&);
+  bool operator==(const DeepPtr&) const;
+  bool operator!=(const DeepPtr&) const;
+  T& operator*() const;
+  T* operator->() const;
 };
 
 template<class T>

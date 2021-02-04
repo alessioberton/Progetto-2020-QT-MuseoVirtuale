@@ -2,7 +2,7 @@
   {
     "author": "Alessio Berton",
     "category": "Quadro",
-    "creationDate": "26/12/2015",
+    "creationDate": "26/12/2008",
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroArgento.jpg",
@@ -143,7 +143,7 @@
     "height": 430,
     "imgPath": ":/img/mosaicoOro.jpg",
     "name": "Oro",
-    "mosaicoMaterial": "argento",
+    "mosaicoMaterial": "Oro",
     "width": 230
   },
   {
@@ -154,7 +154,7 @@
     "height": 430,
     "imgPath": ":/img/mosaicoPietra.jpg",
     "name": "Pietra",
-    "mosaicoMaterial": "argento",
+    "mosaicoMaterial": "Pietra",
     "width": 230
   },
   {
@@ -165,7 +165,7 @@
     "height": 430,
     "imgPath": ":/img/mosaicoVetro.jpg",
     "name": "Vetro",
-    "mosaicoMaterial": "argento",
+    "mosaicoMaterial": "Vetro",
     "width": 230
   },
   {
@@ -176,7 +176,7 @@
     "height": 430,
     "imgPath": ":/img/mosaicoMarmo.jpg",
     "name": "Marmo",
-    "mosaicoMaterial": "ardsdagento",
+    "mosaicoMaterial": "Marmo",
     "width": 230
   },
   {

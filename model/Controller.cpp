@@ -64,8 +64,13 @@ unsigned int Controller::countSameAuthor(const QString & author) const { return 
 
 DeepPtr<Opera> Controller::searchClicked(int index) const { return model->searchOpera(index); }
 
-Container<DeepPtr<Opera> > Controller::searchByTpeAndName(const QString& type, const QString& name) const { return model->getOperaByTypeAndName(type, name); }
+Container<DeepPtr<Opera> > Controller::searchByTpeNameSale(const QString& type, const QString& name, bool isOnSale) const { return model->getOperaByTypeAndName(type, name, isOnSale); }
+
+int Controller::findOperaGivenName(const QString& opName) const { return model->searchOperaGivenName(opName); }
 
 void Controller::saveBtnClicked(Opera* newOpera) const { model->insertOpera(newOpera); }
 
-void Controller::deleteBtnClicked(Opera* deleteOpera) const { model->deleteOpera(deleteOpera->clone()); }
+void Controller::deleteBtnClicked(int indexOpera) const {
+  model->deleteOpera(indexOpera);
+  view->updateEntireView();
+}

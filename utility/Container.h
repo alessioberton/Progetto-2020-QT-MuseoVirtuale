@@ -157,7 +157,7 @@ int Container<T>::search(const T& obj) const {
   bool continua = true;
   int i = 0;
   for (i = 0; i < size && continua; i++) { if (array[i] == obj) continua = !continua; }
-  return (continua == false) ? i : -1;
+  return (continua == false) ? i-1 : -1;
 }
 
 template<class T>
@@ -165,7 +165,7 @@ T Container<T>::search(int index) const {
   bool continua = true;
   int i = 0;
   for (i = 0; i < index && continua; i++) { continua = !continua; }
-  return array[i];
+  return array[i-1];
 }
 
 template<class T>

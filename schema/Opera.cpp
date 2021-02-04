@@ -18,7 +18,7 @@ double Opera::calcuateRealPrice() const {
 bool Opera::isOnSale() const {
   const auto creationSculturaPlusTen = getCreationDate().addYears(10).toTime_t();
   const auto currentaDate = QDateTime::currentDateTimeUtc().toTime_t();
-  return creationSculturaPlusTen >= currentaDate || hasValue();
+  return creationSculturaPlusTen >= currentaDate && hasValue();
 }
 
 QString Opera::getImgPath() const { return imgPath; }
@@ -56,35 +56,27 @@ void Opera::setPrice(double newPrice) { price = newPrice; }
 bool Opera::operator==(const Opera& opera) const { return author == opera.author && name == opera.name; }
 
 QJsonObject Opera::serialize() const {
-    QJsonObject charJson;
-    QString format = "dd/MM/yyyy";
-//    QLocale locale = {QLocale(QLocale::Italian)};
-//    galleryInfoLayout->addRow("Data prima esposizione: ", new QLabel(locale.toString(quadro->getExpositionDate(), format)));
-
-    charJson["imgPath"] = getImgPath();
-    charJson["author"] = getAuthor();
-    charJson["category"] = getCategory();
-    charJson["creationDate"] = getCreationDate().toString(format);
-    charJson["expositionDate"] = getExpositionDate().toString(format);
-    charJson["height"] = static_cast<int>(getHeight());
-    charJson["name"] = getName();
-    charJson["price"] = getPrice();
-    charJson["onSale"] = isOnSale() ? "SI" : "NO";
-    charJson["width"] = static_cast<int>(getWidth());
-    return charJson;
+  QJsonObject charJson;
+  QString format = "dd/MM/yyyy";
+  charJson["imgPath"] = getImgPath();
+  charJson["author"] = getAuthor();
+  charJson["category"] = getCategory();
+  charJson["creationDate"] = getCreationDate().toString(format);
+  charJson["expositionDate"] = getExpositionDate().toString(format);
+  charJson["height"] = static_cast<int>(getHeight());
+  charJson["name"] = getName();
+  charJson["price"] = getPrice();
+  charJson["onSale"] = isOnSale() ? "SI" : "NO";
+  charJson["width"] = static_cast<int>(getWidth());
+  return charJson;
 }
 
 void Opera::deserialize(const QJsonObject& obj) {
-    if (obj.contains("imgPath") && obj["imgPath"].isString())
-	setImgPath(obj["imgPath"].toString());
-    if (obj.contains("name") && obj["name"].isString())
-	setName(obj["name"].toString());
-    if (obj.contains("author") && obj["author"].isString())
-	setAuthor(obj["author"].toString());
-    if (obj.contains("height"))
-	setHeight(obj["height"].toInt());
-    if (obj.contains("width"))
-	setWidth(obj["width"].toInt());
+    if (obj.contains("imgPath") && obj["imgPath"].isString()) setImgPath(obj["imgPath"].toString());
+    if (obj.contains("name") && obj["name"].isString()) setName(obj["name"].toString());
+    if (obj.contains("author") && obj["author"].isString()) setAuthor(obj["author"].toString());
+    if (obj.contains("height")) setHeight(obj["height"].toInt());
+    if (obj.contains("width")) setWidth(obj["width"].toInt());
     if (obj.contains("creationDate") && obj["creationDate"].isString())
 	SetCreationDate(QDateTime::fromString(obj["creationDate"].toString(),"dd/MM/yyyy"));
     if (obj.contains("expositionDate") && obj["expositionDate"].isString())
