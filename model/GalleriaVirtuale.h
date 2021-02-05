@@ -81,12 +81,12 @@ private:
   void buildList(const QString&, const QString&, bool);
   void showList(const QString&, bool, Container<DeepPtr<Opera>>);
   void updateList(const QString&, bool, Container<DeepPtr<Opera>>);
-  void rebuildAfterSearch(Opera*, bool&, bool);
-  void updateMidLayout(QHBoxLayout*, Opera*);
-  void insertImg(Opera*);
+  void rebuildAfterSearch(DeepPtr<Opera>&, bool&, bool);
+  void updateMidLayout(QHBoxLayout*, DeepPtr<Opera>&);
+  void insertImg(const QString&);
   // Metodi costanti
   void resetLayout(QLayout*) const;
-  void inserisciDescrizioneOpera(Opera*) const;
+  void inserisciDescrizioneOpera(DeepPtr<Opera>&) const;
   void updateForm() const;
   QFrame* createLine() const;
   void resetNameList() const;

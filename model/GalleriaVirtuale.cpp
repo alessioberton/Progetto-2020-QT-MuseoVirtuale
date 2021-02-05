@@ -10,13 +10,13 @@ void GalleriaVirtuale::resetFilters() const {
   showBox->setCurrentIndex(0);
 }
 
-void GalleriaVirtuale::updateMidLayout(QHBoxLayout* layout, Opera* op) {
+void GalleriaVirtuale::updateMidLayout(QHBoxLayout* layout, DeepPtr<Opera> &op) {
   resetLayout(layout);
   authorInfoLayout = new QFormLayout;
   operaInfoLayout = new QFormLayout;
   galleryInfoLayout = new QFormLayout;
   inserisciDescrizioneOpera(op);
-  insertImg(op);
+  insertImg(op->getImgPath());
   operaLabel->setPixmap(operaImg);
   operaImageLayout->update();
   updateForm();
@@ -29,8 +29,8 @@ void GalleriaVirtuale::updateEntireView() {
   changeListener();
 }
 
-void GalleriaVirtuale::insertImg(Opera* operaToDispay){
-  operaImg.load(operaToDispay->getImgPath());
+void GalleriaVirtuale::insertImg(const QString& operaPath){
+  operaImg.load(operaPath);
   operaLabel->setPixmap(operaImg);
 }
 
@@ -161,10 +161,10 @@ void GalleriaVirtuale::createTopLayout() {
   operaImageLayout = new QHBoxLayout;
   if (!listOperaContainer.isEmpty()) {
       for (int i = 0; i < listOperaContainer.getSize(); i++) {
-        Opera* test = listOperaContainer[i]->clone();
-        if (i == 0) insertImg(test);
-        operaList->addItem(new QListWidgetItem(test->getName()));
-        delete test;
+	Opera* test = listOperaContainer[i]->clone();
+	if (i == 0) insertImg(listOperaContainer[i]->getImgPath());
+	operaList->addItem(new QListWidgetItem(test->getName()));
+	delete test;
       }
   }
   operaBox->setWidget(operaList);
@@ -191,9 +191,7 @@ void GalleriaVirtuale::buildMidLayout(const QString& operaName) {
   galleryInfoLayout = new QFormLayout;
   if (!listOperaContainer.isEmpty()) {
     if (operaName == "") { //SITUAZIONE INIZIALE
-      Opera* firstOpera = listOperaContainer[0]->clone();
-      inserisciDescrizioneOpera(firstOpera);
-      delete firstOpera;
+      inserisciDescrizioneOpera(listOperaContainer[0]);
       updateForm();
       mainLayout->addLayout(midLayout);
     } else { // UPDATE FORM
@@ -201,13 +199,11 @@ void GalleriaVirtuale::buildMidLayout(const QString& operaName) {
 								   showBox->currentText() == "No" ? false : true);
       bool continua = true;
       for (int i = 0; i < listaOpereByName.getSize() && continua ; i++ ) {
-        if (listaOpereByName[i]->getName() == operaName) {
-          Opera* opera = listaOpereByName[i]->clone();
-          inserisciDescrizioneOpera(opera);
-          insertImg(opera);
-          continua = !continua;
-          delete opera;
-        }
+	if (listaOpereByName[i]->getName() == operaName) {
+	  inserisciDescrizioneOpera(listaOpereByName[i]);
+	  insertImg(listaOpereByName[i]->getImgPath());
+	  continua = !continua;
+	}
       }
       operaImageLayout->update();
       updateForm();
@@ -281,7 +277,7 @@ void GalleriaVirtuale::createBottomLayout() {
   mainLayout->addLayout(bottomLayout);
 }
 
-void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
+void GalleriaVirtuale::inserisciDescrizioneOpera(DeepPtr<Opera>& singleOpera) const {
   QString format = "dd MMMM yyyy";
   QLocale locale = QLocale(QLocale::Italian);
   QLabel* infoAuthor = new QLabel("Informazioni Autore");
@@ -298,7 +294,7 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
   galleryInfoLayout->addRow("Data creazione: ", new QLabel(locale.toString(singleOpera->getCreationDate(), format)));
   galleryInfoLayout->addRow("Data prima esposizione: ", new QLabel(locale.toString(singleOpera->getExpositionDate(), format)));
   galleryInfoLayout->addRow("Al momento in vendita in galleria: ", new QLabel(singleOpera->isOnSale() ? "SI" : "NO"));
-  const Quadro* quadro = dynamic_cast<Quadro*>(singleOpera);
+  const Quadro* quadro = dynamic_cast<Quadro*>(singleOpera.operator->());
   if (quadro) {
     infoOpera->setText("Informazioni Quadro");
     operaInfoLayout->addRow("Nome Quadro: ", new QLabel(quadro->getName()));
@@ -308,8 +304,8 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
     operaInfoLayout->addRow(createLine());
     operaInfoLayout->addRow("Tipo pittura: ", new QLabel(quadro->getDipintoTypeString()));
     operaInfoLayout->addRow("Materiale cornice: ", new QLabel(quadro->getQuadroMaterialString()));
-  } else if (dynamic_cast<Scultura*>(singleOpera)) {
-    const Scultura* scultura = static_cast<Scultura*>(singleOpera);
+  } else if (dynamic_cast<Scultura*>(singleOpera.operator->())) {
+    const Scultura* scultura = static_cast<Scultura*>(singleOpera.operator->());
     if (scultura) {
       infoOpera->setText("Informazioni Scultura");
       operaInfoLayout->addRow("Nome Scultura: ", new QLabel(scultura->getName()));
@@ -319,8 +315,8 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
       operaInfoLayout->addRow(createLine());
       operaInfoLayout->addRow("Materiale utilizzato: ", new QLabel(scultura->getSculturaMaterialString()));
     }
-  } else if (dynamic_cast<Mosaico*>(singleOpera)) {
-    const Mosaico* mosaico = static_cast<Mosaico*>(singleOpera);
+  } else if (dynamic_cast<Mosaico*>(singleOpera.operator->())) {
+    const Mosaico* mosaico = static_cast<Mosaico*>(singleOpera.operator->());
     if (mosaico) {
       infoOpera->setText("Informazioni Mosaico");
       operaInfoLayout->addRow("Nome mosaico: ", new QLabel(mosaico->getName()));
@@ -330,8 +326,8 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
       operaInfoLayout->addRow(createLine());
       operaInfoLayout->addRow("Materiale utilizzato: ", new QLabel(mosaico->getMosaicoMaterialString()));
     }
-  } else if (dynamic_cast<Dipinto*>(singleOpera)) {
-    const Dipinto* dipinto = static_cast<Dipinto*>(singleOpera);
+  } else if (dynamic_cast<Dipinto*>(singleOpera.operator->())) {
+    const Dipinto* dipinto = static_cast<Dipinto*>(singleOpera.operator->());
     if (dipinto) {
       infoOpera->setText("Informazioni Dipinto");
       operaInfoLayout->addRow("Nome dipinto: ", new QLabel(dipinto->getName()));
@@ -366,7 +362,7 @@ void GalleriaVirtuale::buildList(const QString& nameStr, const QString& showStr,
   }
 }
 
-void GalleriaVirtuale::rebuildAfterSearch(Opera* op, bool &showFirstImage, bool typeSale) {
+void GalleriaVirtuale::rebuildAfterSearch(DeepPtr<Opera>& op, bool &showFirstImage, bool typeSale) {
   if (typeSale) {
     if (op->isOnSale()) operaList->addItem(new QListWidgetItem(op->getName()));
   } else operaList->addItem(new QListWidgetItem(op->getName()));
@@ -374,7 +370,6 @@ void GalleriaVirtuale::rebuildAfterSearch(Opera* op, bool &showFirstImage, bool 
     updateMidLayout(midInfoLayout, op);
     showFirstImage = false;
   }
-  delete op;
 }
 
 void GalleriaVirtuale::showList(const QString& str, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
@@ -382,39 +377,31 @@ void GalleriaVirtuale::showList(const QString& str, bool typeSale, Container<Dee
   if (str == "Tutte") updateList(str, typeSale, opereToShow);
   else if (str == "Quadro") {
     for (int i = 0; i < opereToShow.getSize(); ++i) {
-      Quadro* quadro = dynamic_cast<Quadro*>(opereToShow[i]->clone());
-      if (quadro) rebuildAfterSearch(quadro, showFirstImage, typeSale);
+	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
     }
   } else if (str == "Scultura") {
     for (int i = 0; i < opereToShow.getSize(); ++i) {
-      Scultura* scultura = dynamic_cast<Scultura*>(opereToShow[i]->clone());
-      if (scultura) rebuildAfterSearch(scultura, showFirstImage, typeSale);
+       rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
     }
   } else if (str == "Mosaico") {
     for (int i = 0; i < opereToShow.getSize(); ++i) {
-      Mosaico* mosaico = dynamic_cast<Mosaico*>(opereToShow[i]->clone());
-      if (mosaico) rebuildAfterSearch(mosaico, showFirstImage, typeSale);
+	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
     }
   } else if (str == "Dipinto") {
     for (int i = 0; i < opereToShow.getSize(); ++i) {
-      Dipinto* dipinto = dynamic_cast<Dipinto*>(opereToShow[i]->clone());
-      if (dipinto && dipinto->getCategory() == "Dipinto") rebuildAfterSearch(dipinto, showFirstImage, typeSale);
+	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
     }
   }
 }
 
 void GalleriaVirtuale::updateList(const QString& typeOpera, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
   for (int i = 0; i < opereToShow.getSize(); i++) {
-    const auto deepOpera = opereToShow[i]->clone();
-    if (!typeSale) operaList->addItem(new QListWidgetItem(deepOpera->getName()));
-    else if (typeSale) if (deepOpera->isOnSale()) operaList->addItem(new QListWidgetItem(deepOpera->getName()));
-    delete deepOpera;
+    if (!typeSale) operaList->addItem(new QListWidgetItem(opereToShow[i]->getName()));
+    else if (typeSale) if (opereToShow[i]->isOnSale()) operaList->addItem(new QListWidgetItem(opereToShow[i]->getName()));
   }
   if (operaList->count() > 0) {
-    Opera* op = controller->searchByTpeNameSale(typeOpera,
-                                           operaList->item(0)->text(), showBox->currentText() == "No" ? false : true)[0]->clone();
-    updateMidLayout(midInfoLayout, op);
-    delete op;
+    auto deepOp = controller->searchByTpeNameSale(typeOpera, operaList->item(0)->text(), showBox->currentText() == "No" ? false : true);
+    updateMidLayout(midInfoLayout, deepOp[0]);
   } else {
     operaImg.load(":/img/noOpera.jpg");
     operaLabel->setPixmap(operaImg);
