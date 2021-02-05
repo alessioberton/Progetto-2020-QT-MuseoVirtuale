@@ -85,7 +85,6 @@ private:
   void updateList(const QString&, bool, Container<DeepPtr<Opera>>);
   void rebuildAfterSearch(Opera*, bool&, bool);
   void updateMidLayout(QHBoxLayout*, Opera*);
-  void reBuildLayout();
   void insertImg(Opera*);
   // Metodi costanti
   void resetLayout(QLayout*) const;
