@@ -3,7 +3,7 @@
 
 namespace EnumCollection {
   enum DipintoType { olio, acquerelli, pastelli, cera };
-  enum QuadroMaterial { legno, oro, ceramica, metallo, rame};
+  enum QuadroMaterial { legno, oro, ceramica, metallo, argento, rame};
   enum SculturaMaterial { marmo, pietra, terracotta, avorio, argilla };
 }
 

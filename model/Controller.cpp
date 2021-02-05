@@ -64,7 +64,7 @@ unsigned int Controller::countSameAuthor(const QString & author) const { return 
 
 DeepPtr<Opera> Controller::searchClicked(int index) const { return model->searchOpera(index); }
 
-Container<DeepPtr<Opera> > Controller::searchByTpeNameSale(const QString& type, const QString& name, bool isOnSale) const { return model->getOperaByTypeAndName(type, name, isOnSale); }
+Container<DeepPtr<Opera>> Controller::searchByTpeNameSale(const QString& type, const QString& name, bool isOnSale) const { return model->getOperaByTypeAndName(type, name, isOnSale); }
 
 int Controller::findOperaGivenName(const QString& opName) const { return model->searchOperaGivenName(opName); }
 

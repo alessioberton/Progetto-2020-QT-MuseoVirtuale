@@ -4,7 +4,9 @@ Model::~Model() { }
 
 void Model::clearOperaContainer() { operaContainer.clear(); }
 
-void Model::insertOpera(Opera* newOpera) { operaContainer.insert(newOpera); }
+void Model::insertOpera(Opera* newOpera) {
+  operaContainer.insert(newOpera);
+}
 
 void Model::deleteOpera(int indexOldOpera) { operaContainer.remove(indexOldOpera); }
 

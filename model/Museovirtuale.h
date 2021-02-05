@@ -31,7 +31,6 @@
 #include <QScrollArea>
 #include <QListWidget>
 #include <QListWidgetItem>
-#include <QStackedWidget>
 #include <QFormLayout>
 #include <QTextEdit>
 #include <QFileDialog>
@@ -69,7 +68,6 @@ private:
   QVBoxLayout* midLayout;
   QHBoxLayout* midInfoLayout;
   QWidget* midInfoWidget;
-  QStackedWidget* stackedWidget;
   QVBoxLayout* bottomLayout;
   QHBoxLayout* bottomRigthLayout;
   QLineEdit* searchBox;

@@ -23,6 +23,7 @@ double Quadro::calcuateRealPrice() const {
     if (tipoQuadro == "Legno") realPrice += 1111.5;
     if (tipoQuadro == "Rame") realPrice += 5555.5;
     if (tipoQuadro == "Oro") realPrice += 7777.5;
+    if (tipoQuadro == "Argento") realPrice += 4777.5;
     return realPrice;
 }
 
@@ -41,6 +42,9 @@ QuadroMaterial Quadro::fromStringToEnum(const QString &typeString) {
   }
   if (typeString == "Metallo") {
     return QuadroMaterial(metallo);
+  }
+  if (typeString == "Argento") {
+    return QuadroMaterial(argento);
   }
   return QuadroMaterial(legno);
 }
@@ -62,6 +66,9 @@ QString Quadro::getQuadroMaterialString() const {
     break;
   case metallo:
     quadroMaterialString = "Metallo";
+    break;
+  case argento:
+    quadroMaterialString = "Argento";
     break;
   }
   return quadroMaterialString;

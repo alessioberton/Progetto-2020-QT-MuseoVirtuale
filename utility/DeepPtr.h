@@ -9,7 +9,6 @@ public:
   DeepPtr(const DeepPtr&);
   DeepPtr(T* p = nullptr);
   ~DeepPtr();
-
   DeepPtr& operator=(const DeepPtr&);
   bool operator==(const DeepPtr&) const;
   bool operator!=(const DeepPtr&) const;

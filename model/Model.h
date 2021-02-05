@@ -14,7 +14,7 @@ public:
   ~Model();
   Container<DeepPtr<Opera>> getOperaContainer() const;
   Container<DeepPtr<Opera>> getOperaByTypeAndName(const QString&, const QString&, bool) const;
-  void choseOpera(const QString& , const QString&, bool, Container<DeepPtr<Opera>> &) const;
+  void choseOpera(const QString& , const QString&, bool, Container<DeepPtr<Opera>>&) const;
   unsigned int getCountSameAuthor(const QString&) const;
   DeepPtr<Opera> searchOpera(int) const;
   int searchOperaGivenName(const QString&) const;
