@@ -10,7 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Main.cpp \
-    model/Museovirtuale.cpp \
+    model/GalleriaVirtuale.cpp \
     model/Controller.cpp \
     model/Model.cpp \
     schema/Dipinto.cpp \
@@ -21,7 +21,7 @@ SOURCES += \
     utility/LoadEntryDataUtility.cpp
 
 HEADERS += \
-    model/Museovirtuale.h \
+    model/GalleriaVirtuale.h \
     model/Controller.h \
     model/Model.h \
     schema/EnumCollection.h \

@@ -1,5 +1,5 @@
-#ifndef MUSEOVIRTUALE_H
-#define MUSEOVIRTUALE_H
+#ifndef GALLERIAVIRTUALE_H
+#define GALLERIAVIRTUALE_H
 
 #include <QString>
 #include <QWidget>
@@ -36,8 +36,6 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDateTimeEdit>
-
-
 #include <QSignalMapper>
 
 #include "schema/Opera.h"
@@ -48,7 +46,7 @@ using namespace std;
 
 class Controller;
 
-class MuseoVirtuale : public QMainWindow {  Q_OBJECT
+class GalleriaVirtuale : public QMainWindow {  Q_OBJECT
 private:
   Container<DeepPtr<Opera>> listOperaContainer;
   QLabel* operaLabel;
@@ -99,10 +97,10 @@ public slots:
   void resetFilters() const;
   void showInfoMsg() const;
 public:
-  MuseoVirtuale(Controller* controller, QWidget *parent = nullptr);
-  ~MuseoVirtuale() = default;
+  GalleriaVirtuale(Controller* controller, QWidget *parent = nullptr);
+  ~GalleriaVirtuale() = default;
   void showErrorMessage(const QString&) const;
   void updateEntireView();
   void setController(Controller*);
 };
-#endif // MUSEOVIRTUALE_H
+#endif // GALLERIAVIRTUALE_H

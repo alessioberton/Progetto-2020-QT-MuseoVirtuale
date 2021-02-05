@@ -6,7 +6,7 @@ Controller::~Controller() {}
 
 void Controller::setModel(Model *m) { model = m; }
 
-void Controller::setView(MuseoVirtuale* v) { view = v; view->setController(this); }
+void Controller::setView(GalleriaVirtuale* v) { view = v; view->setController(this); }
 
 Container<DeepPtr<Opera>> Controller::getOperaContainer() const { return model->getOperaContainer(); }
 

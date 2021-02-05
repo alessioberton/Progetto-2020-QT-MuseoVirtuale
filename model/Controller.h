@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include "model/Model.h"
-#include "model/Museovirtuale.h"
+#include "model/GalleriaVirtuale.h"
 #include "schema/Opera.h"
 #include "schema/Dipinto.h"
 #include "schema/Quadro.h"
@@ -14,13 +14,13 @@
 class Controller : public QObject { Q_OBJECT
 
 private:
-  MuseoVirtuale* view;
+  GalleriaVirtuale* view;
   Model* model;
 public:
   explicit Controller(Model* model, QObject *parent = nullptr);
   ~Controller();
   void setModel(Model*);
-  void setView(MuseoVirtuale*);
+  void setView(GalleriaVirtuale*);
   Container<DeepPtr<Opera>> getOperaContainer() const;
   unsigned int countSameAuthor(const QString&) const;
   DeepPtr<Opera> searchClicked(int) const;

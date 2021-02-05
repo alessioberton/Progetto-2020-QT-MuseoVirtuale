@@ -6,7 +6,7 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroArgento.jpg",
-    "name": "Argento",
+    "name": "QuadroArgento",
     "quadroMaterial": "Argento",
     "dipintoType": "Olio",
     "width": 60
@@ -18,9 +18,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroOro.jpg",
-    "name": "Oro",
+    "name": "QuadroOro",
     "quadroMaterial": "Oro",
-    "dipintoType": "Olio",
+    "dipintoType": "Acquerelli",
     "width": 60
   },
   {
@@ -30,9 +30,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroRame.jpg",
-    "name": "Rame",
+    "name": "QuadroRame",
     "quadroMaterial": "Rame",
-    "dipintoType": "Olio",
+    "dipintoType": "Pastelli",
     "width": 60
   },
   {
@@ -42,9 +42,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroRame2.jpg",
-    "name": "Rame2",
+    "name": "QuadroRame2",
     "quadroMaterial": "Rame",
-    "dipintoType": "Olio",
+    "dipintoType": "Pastelli",
     "width": 60
   },
   {
@@ -54,7 +54,7 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroLegno.jpg",
-    "name": "Legno",
+    "name": "QuadroLegno",
     "quadroMaterial": "Legno",
     "dipintoType": "Olio",
     "width": 60
@@ -66,9 +66,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroLegno2.jpg",
-    "name": "Legno2",
+    "name": "QuadroLegno2",
     "quadroMaterial": "Legno",
-    "dipintoType": "Olio",
+    "dipintoType": "Acquerelli",
     "width": 60
   },
   {
@@ -78,9 +78,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroLegno3.jpg",
-    "name": "Legno3",
+    "name": "QuadroLegno3",
     "quadroMaterial": "Legno",
-    "dipintoType": "Olio",
+    "dipintoType": "Cera",
     "width": 60
   },
   {
@@ -90,9 +90,9 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroCeramica.jpg",
-    "name": "Ceramica",
+    "name": "QuadroCeramica",
     "quadroMaterial": "Ceramica",
-    "dipintoType": "Olio",
+    "dipintoType": "Acquerelli",
     "width": 60
   },
   {
@@ -102,7 +102,7 @@
     "expositionDate": "10/05/2020",
     "height": 120,
     "imgPath": ":/img/quadroCeramica2.jpg",
-    "name": "Ceramica2",
+    "name": "QuadroCeramica2",
     "quadroMaterial": "Ceramica",
     "dipintoType": "Olio",
     "width": 60
@@ -123,7 +123,7 @@
     "expositionDate": "10/05/2008",
     "height": 517,
     "imgPath": ":/img/sculturaMarmo.jpg",
-    "name": "Marmo",
+    "name": "SculturaMarmo",
     "width": 199
   },
   {
@@ -134,7 +134,7 @@
     "expositionDate": "10/05/2008",
     "height": 100,
     "imgPath": ":/img/sculturaMarmo2.jpg",
-    "name": "Marmo2",
+    "name": "SculturaMarmo2",
     "width": 100
   },
   {
@@ -145,7 +145,7 @@
     "expositionDate": "10/05/2008",
     "height": 100,
     "imgPath": ":/img/sculturaAvorio.jpg",
-    "name": "Avorio",
+    "name": "SculturaAvorio",
     "width": 190
   },
   {
@@ -156,7 +156,7 @@
     "expositionDate": "10/05/2008",
     "height": 100,
     "imgPath": ":/img/sculturaPietra.jpg",
-    "name": "Pietra",
+    "name": "SculturaPietra",
     "width": 100
   },
   {
@@ -167,7 +167,7 @@
     "expositionDate": "10/05/2008",
     "height": 100,
     "imgPath": ":/img/sculturaPietra2.jpg",
-    "name": "Pietra2",
+    "name": "SculturaPietra2",
     "width": 100
   },
   {
@@ -178,7 +178,7 @@
     "expositionDate": "10/05/2008",
     "height": 100,
     "imgPath": ":/img/sculturaArgilla.jpg",
-    "name": "Argilla",
+    "name": "SculturaArgilla",
     "width": 100
   },
   
@@ -189,13 +189,13 @@
 
   
   {
-    "author": "Rocco salvia",
+    "author": "Riccardo Parlato",
     "category": "Dipinto",
     "creationDate": "10/05/2017",
     "expositionDate": "10/05/2017",
     "height": 90,
     "imgPath": ":/img/dipintoAcquerello.jpg",
-    "name": "Acquerello",
+    "name": "DipintoAcquerello",
     "dipintoType": "Acquerelli",
     "width": 130
   },
@@ -206,7 +206,7 @@
     "expositionDate": "10/05/2008",
     "height": 120,
     "imgPath": ":/img/dipintoAcquerello2.jpg",
-    "name": "Acquerello2",
+    "name": "DipintoAcquerello2",
 	"dipintoType": "Acquerelli",
     "width": 150
   },
@@ -217,7 +217,7 @@
     "expositionDate": "10/05/2008",
     "height": 342,
     "imgPath": ":/img/dipintoOlio.jpg",
-    "name": "Olio",
+    "name": "DipintoOlio",
 	"dipintoType": "Olio",
     "width": 172
   },
@@ -228,7 +228,7 @@
     "expositionDate": "10/05/2008",
     "height": 342,
     "imgPath": ":/img/dipintoOlio2.jpg",
-    "name": "Olio2",
+    "name": "DipintoOlio2",
 	"dipintoType": "Olio",
     "width": 172
   }, 
@@ -239,7 +239,7 @@
     "expositionDate": "10/05/2017",
     "height": 90,
     "imgPath": ":/img/dipintoCera.jpg",
-    "name": "Cera",
+    "name": "DipintoCera",
     "dipintoType": "Cera",
     "width": 130
   },
@@ -250,7 +250,7 @@
     "expositionDate": "10/05/2008",
     "height": 120,
     "imgPath": ":/img/dipintoCera2.jpg",
-    "name": "Cera2",
+    "name": "DipintoCera2",
     "dipintoType": "Cera",
     "width": 150
   },
@@ -261,7 +261,7 @@
     "expositionDate": "10/05/2008",
     "height": 342,
     "imgPath": ":/img/dipintoPastello.jpg",
-    "name": "Pastello",
+    "name": "DipintoPastello",
 	"dipintoType": "Pastelli",
     "width": 172
   },
@@ -272,7 +272,7 @@
     "expositionDate": "10/05/2008",
     "height": 342,
     "imgPath": ":/img/dipintoPastello2.jpg",
-    "name": "Pastello2",
+    "name": "DipintoPastello2",
 	"dipintoType": "Pastelli",
     "width": 172
   },
@@ -291,7 +291,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoOro.jpg",
-    "name": "Oro",
+    "name": "MosaicoOro",
     "mosaicoMaterial": "Oro",
     "width": 230
   },
@@ -302,7 +302,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoPietra.jpg",
-    "name": "Pietra",
+    "name": "MosaicoPietra",
     "mosaicoMaterial": "Pietra",
     "width": 230
   },
@@ -313,7 +313,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoVetro.jpg",
-    "name": "Vetro",
+    "name": "MosaicoVetro",
     "mosaicoMaterial": "Vetro",
     "width": 230
   },
@@ -324,7 +324,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoVetro2.jpg",
-    "name": "Vetro2",
+    "name": "MosaicoVetro2",
     "mosaicoMaterial": "Vetro",
     "width": 230
   },
@@ -335,7 +335,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoMarmo.jpg",
-    "name": "Marmo",
+    "name": "MosaicoMarmo",
     "mosaicoMaterial": "Marmo",
     "width": 230
   },
@@ -346,7 +346,7 @@
     "expositionDate": "10/05/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoMarmo2.jpg",
-    "name": "Marmo2",
+    "name": "MosaicoMarmo2",
     "mosaicoMaterial": "Marmo",
     "width": 230
   }

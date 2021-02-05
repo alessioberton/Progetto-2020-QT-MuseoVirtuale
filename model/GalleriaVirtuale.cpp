@@ -1,16 +1,16 @@
-#include "Museovirtuale.h"
+#include "GalleriaVirtuale.h"
 #include "Controller.h"
 
 // "METODI DI UTILITA'"
-void MuseoVirtuale::setController(Controller *c) { controller = c; }
+void GalleriaVirtuale::setController(Controller *c) { controller = c; }
 
-void MuseoVirtuale::resetFilters() const {
+void GalleriaVirtuale::resetFilters() const {
   searchBox->clear();
   typeBox->setCurrentIndex(0);
   showBox->setCurrentIndex(0);
 }
 
-void MuseoVirtuale::updateMidLayout(QHBoxLayout* layout, Opera* op) {
+void GalleriaVirtuale::updateMidLayout(QHBoxLayout* layout, Opera* op) {
   resetLayout(layout);
   authorInfoLayout = new QFormLayout;
   operaInfoLayout = new QFormLayout;
@@ -23,18 +23,18 @@ void MuseoVirtuale::updateMidLayout(QHBoxLayout* layout, Opera* op) {
   mainLayout->update();
 }
 
-void MuseoVirtuale::updateEntireView() {
+void GalleriaVirtuale::updateEntireView() {
   resetLayout(midInfoLayout);
   listOperaContainer = controller->getOperaContainer();
   changeListener();
 }
 
-void MuseoVirtuale::insertImg(Opera* operaToDispay){
+void GalleriaVirtuale::insertImg(Opera* operaToDispay){
   operaImg.load(operaToDispay->getImgPath());
   operaLabel->setPixmap(operaImg);
 }
 
-void MuseoVirtuale::deleteList(const QString & str) const {
+void GalleriaVirtuale::deleteList(const QString & str) const {
   for (int i = 0; i < operaList->count(); ++i) {
     QListWidgetItem* listItem = operaList->item(i);
     if (!listItem->text().toLower().startsWith(str.toLower())) {
@@ -44,14 +44,14 @@ void MuseoVirtuale::deleteList(const QString & str) const {
   }
 }
 
-QFrame* MuseoVirtuale::createLine() const {
+QFrame* GalleriaVirtuale::createLine() const {
   QFrame* line = new QFrame;
   line->setFrameShape(QFrame::HLine);
   line->setFrameShadow(QFrame::Sunken);
   return line;
 }
 
-void MuseoVirtuale::resetLayout(QLayout* layout) const{
+void GalleriaVirtuale::resetLayout(QLayout* layout) const{
   while(layout->count() > 0){
     QLayoutItem* item = layout->takeAt(0);
     QWidget* widget = item->widget();
@@ -61,7 +61,7 @@ void MuseoVirtuale::resetLayout(QLayout* layout) const{
   }
 }
 
-void MuseoVirtuale::updateForm() const {
+void GalleriaVirtuale::updateForm() const {
   midInfoLayout->addWidget(createLine());
   midInfoLayout->addLayout(operaInfoLayout);
   midInfoLayout->addLayout(authorInfoLayout);
@@ -72,11 +72,11 @@ void MuseoVirtuale::updateForm() const {
   midLayout->addWidget(midInfoWidget);
 }
 
-void MuseoVirtuale::resetNameList() const {
+void GalleriaVirtuale::resetNameList() const {
   if (operaList->count() != 0) { operaList->reset(); operaList->clear(); }
 }
 
-QDialog* MuseoVirtuale::buildDialog() const {
+QDialog* GalleriaVirtuale::buildDialog() const {
   QDialog* dialog = new QDialog();
   dialog->setWindowTitle("Galleria virtuale");
   dialog->resize(260, 200);
@@ -93,7 +93,7 @@ QDialog* MuseoVirtuale::buildDialog() const {
   return dialog;
 }
 
-void MuseoVirtuale::showInfoMsg() const {
+void GalleriaVirtuale::showInfoMsg() const {
   QDialog* dialog = buildDialog();
   QVBoxLayout* layout = new QVBoxLayout(dialog);
   layout->addWidget(new QLabel("Mostra virtuale di opere d'arte", dialog), 0, Qt::AlignCenter);
@@ -103,7 +103,7 @@ void MuseoVirtuale::showInfoMsg() const {
   dialog->exec(); //Blocco il widget
 }
 
-void MuseoVirtuale::showErrorMessage(const QString& message) const {
+void GalleriaVirtuale::showErrorMessage(const QString& message) const {
   QDialog* dialog = buildDialog();
   QVBoxLayout* layout = new QVBoxLayout(dialog);
   layout->addWidget(new QLabel(message, dialog), 0, Qt::AlignCenter);
@@ -111,9 +111,9 @@ void MuseoVirtuale::showErrorMessage(const QString& message) const {
 }
 
 // GUI APPLICAZIONE
-MuseoVirtuale::MuseoVirtuale(Controller* c, QWidget *parent) : QMainWindow(parent), controller(c) {
+GalleriaVirtuale::GalleriaVirtuale(Controller* c, QWidget *parent) : QMainWindow(parent), controller(c) {
   setWindowIcon(QIcon(":/img/appIcona.jpg"));
-//  setFixedSize(1700, 880);
+  setFixedSize(1700, 880);
   appLayout = new QVBoxLayout;
   midLayout = new QVBoxLayout;
   listOperaContainer = controller->getOperaContainer();
@@ -126,11 +126,9 @@ MuseoVirtuale::MuseoVirtuale(Controller* c, QWidget *parent) : QMainWindow(paren
   QWidget* mainWidget = new QWidget(this);
   mainWidget->setLayout(appLayout);
   setCentralWidget(mainWidget);
-  showFullScreen();
-  mainWidget->showFullScreen();
 }
 
-void MuseoVirtuale::addMenu() {
+void GalleriaVirtuale::addMenu() {
   mainLayout = new QVBoxLayout;
   toolbarLayout = new QHBoxLayout;
   menuBar = new QMenuBar;
@@ -152,7 +150,7 @@ void MuseoVirtuale::addMenu() {
   appLayout->addLayout(toolbarLayout);
 }
 
-void MuseoVirtuale::createTopLayout() {
+void GalleriaVirtuale::createTopLayout() {
   topLayout = new QHBoxLayout;
   topRightLayout = new QVBoxLayout;
   midInfoLayout = new QHBoxLayout;
@@ -187,7 +185,7 @@ void MuseoVirtuale::createTopLayout() {
   mainLayout->addLayout(topLayout);
 }
 
-void MuseoVirtuale::buildMidLayout(const QString& operaName) {
+void GalleriaVirtuale::buildMidLayout(const QString& operaName) {
   authorInfoLayout = new QFormLayout;
   operaInfoLayout = new QFormLayout;
   galleryInfoLayout = new QFormLayout;
@@ -222,12 +220,12 @@ void MuseoVirtuale::buildMidLayout(const QString& operaName) {
   }
 }
 
-void MuseoVirtuale::changeListener() {
+void GalleriaVirtuale::changeListener() {
   if (!listOperaContainer.isEmpty())
 	  buildList(searchBox->text(), typeBox->currentText(), showBox->currentText() == "No" ? false : true);
 }
 
-void MuseoVirtuale::createBottomLayout() {
+void GalleriaVirtuale::createBottomLayout() {
   bottomLayout= new QVBoxLayout;
   searchBox = new QLineEdit;
   typeBox = new QComboBox;
@@ -283,7 +281,7 @@ void MuseoVirtuale::createBottomLayout() {
   mainLayout->addLayout(bottomLayout);
 }
 
-void MuseoVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
+void GalleriaVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
   QString format = "dd MMMM yyyy";
   QLocale locale = QLocale(QLocale::Italian);
   QLabel* infoAuthor = new QLabel("Informazioni Autore");
@@ -348,7 +346,7 @@ void MuseoVirtuale::inserisciDescrizioneOpera(Opera* singleOpera) const {
   authorInfoLayout->addRow("Opere esposte dall' autore: ", new QLabel(QString::number(controller->countSameAuthor(singleOpera->getAuthor()))));
 }
 
-void MuseoVirtuale::buildList(const QString& nameStr, const QString& showStr, bool typeSale) {
+void GalleriaVirtuale::buildList(const QString& nameStr, const QString& showStr, bool typeSale) {
   resetNameList();
   auto opereToChose = controller->searchByTpeNameSale(showStr, nameStr, showBox->currentText() == "No" ? false : true);
   if (!opereToChose.isEmpty()){
@@ -368,7 +366,7 @@ void MuseoVirtuale::buildList(const QString& nameStr, const QString& showStr, bo
   }
 }
 
-void MuseoVirtuale::rebuildAfterSearch(Opera* op, bool &showFirstImage, bool typeSale) {
+void GalleriaVirtuale::rebuildAfterSearch(Opera* op, bool &showFirstImage, bool typeSale) {
   if (typeSale) {
     if (op->isOnSale()) operaList->addItem(new QListWidgetItem(op->getName()));
   } else operaList->addItem(new QListWidgetItem(op->getName()));
@@ -379,7 +377,7 @@ void MuseoVirtuale::rebuildAfterSearch(Opera* op, bool &showFirstImage, bool typ
   delete op;
 }
 
-void MuseoVirtuale::showList(const QString& str, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
+void GalleriaVirtuale::showList(const QString& str, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
   bool showFirstImage = true;
   if (str == "Tutte") updateList(str, typeSale, opereToShow);
   else if (str == "Quadro") {
@@ -405,7 +403,7 @@ void MuseoVirtuale::showList(const QString& str, bool typeSale, Container<DeepPt
   }
 }
 
-void MuseoVirtuale::updateList(const QString& typeOpera, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
+void GalleriaVirtuale::updateList(const QString& typeOpera, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
   for (int i = 0; i < opereToShow.getSize(); i++) {
     const auto deepOpera = opereToShow[i]->clone();
     if (!typeSale) operaList->addItem(new QListWidgetItem(deepOpera->getName()));
