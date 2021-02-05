@@ -34,8 +34,13 @@ void Model::choseOpera(const QString& type, const QString& name, bool isOnSale, 
 Container<DeepPtr<Opera>> Model::getOperaByTypeAndName(const QString& type, const QString& name, bool isOnSale) const {
   auto opere = Container<DeepPtr<Opera>>();
   if (type == ""  && name == "") return opere;
-  if (type == "Tutte"  && name == "") return getOperaContainer();
-  if (type == "Tutte"  && name != "") {
+  if (type == "Tutte"  && name == "" && !isOnSale) return getOperaContainer();
+  if (type == "Tutte"  && name == "" && isOnSale) {
+    for (int i = 0; i < operaContainer.getSize(); i++) {
+      if (!isOnSale) opere.insert(operaContainer[i]);
+      else if (isOnSale == operaContainer[i]->isOnSale()) opere.insert(operaContainer[i]);
+    }
+  }else if (type == "Tutte"  && name != "") {
     for (int i = 0; i < operaContainer.getSize(); i++) {
       if (operaContainer[i]->getName().toLower().startsWith(name.toLower())) {
 	if (!isOnSale) opere.insert(operaContainer[i]);

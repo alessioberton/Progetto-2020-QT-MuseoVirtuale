@@ -10,6 +10,19 @@ void GalleriaVirtuale::resetFilters() const {
   showBox->setCurrentIndex(0);
 }
 
+void GalleriaVirtuale::showEmptyList() {
+  operaImg.load(":/img/noOpera.jpg");
+  operaLabel->setPixmap(operaImg);
+  operaImageLayout->update();
+  resetLayout(midInfoLayout);
+  authorInfoLayout = new QFormLayout;
+  operaInfoLayout = new QFormLayout;
+  galleryInfoLayout = new QFormLayout;
+  authorInfoLayout->addRow("Attenzione ", new QLabel("Nessuna opera in mostra"));
+  updateForm();
+  mainLayout->update();
+}
+
 void GalleriaVirtuale::updateMidLayout(QHBoxLayout* layout, DeepPtr<Opera> &op) {
   resetLayout(layout);
   authorInfoLayout = new QFormLayout;
@@ -161,10 +174,8 @@ void GalleriaVirtuale::createTopLayout() {
   operaImageLayout = new QHBoxLayout;
   if (!listOperaContainer.isEmpty()) {
       for (int i = 0; i < listOperaContainer.getSize(); i++) {
-	Opera* test = listOperaContainer[i]->clone();
 	if (i == 0) insertImg(listOperaContainer[i]->getImgPath());
-	operaList->addItem(new QListWidgetItem(test->getName()));
-	delete test;
+	operaList->addItem(new QListWidgetItem(listOperaContainer[i]->getName()));
       }
   }
   operaBox->setWidget(operaList);
@@ -216,9 +227,14 @@ void GalleriaVirtuale::buildMidLayout(const QString& operaName) {
   }
 }
 
+
 void GalleriaVirtuale::changeListener() {
+  resetNameList();
   if (!listOperaContainer.isEmpty())
-	  buildList(searchBox->text(), typeBox->currentText(), showBox->currentText() == "No" ? false : true);
+    buildList(searchBox->text(), typeBox->currentText(), showBox->currentText() == "No" ? false : true);
+  else {
+   showEmptyList();
+  }
 }
 
 void GalleriaVirtuale::createBottomLayout() {
@@ -343,22 +359,12 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(DeepPtr<Opera>& singleOpera) co
 }
 
 void GalleriaVirtuale::buildList(const QString& nameStr, const QString& showStr, bool typeSale) {
-  resetNameList();
   auto opereToChose = controller->searchByTpeNameSale(showStr, nameStr, showBox->currentText() == "No" ? false : true);
-  if (!opereToChose.isEmpty()){
-    showList(showStr, typeSale, opereToChose);
+  if (!opereToChose.isEmpty()) {
+    showList(typeSale, opereToChose);
     deleteList(nameStr);
   } else {
-    operaImg.load(":/img/noOpera.jpg");
-    operaLabel->setPixmap(operaImg);
-    operaImageLayout->update();
-    resetLayout(midInfoLayout);
-    authorInfoLayout = new QFormLayout;
-    operaInfoLayout = new QFormLayout;
-    galleryInfoLayout = new QFormLayout;
-    authorInfoLayout->addRow("Attenzione ", new QLabel("Nessuna opera in mostra"));
-    updateForm();
-    mainLayout->update();
+    showEmptyList();
   }
 }
 
@@ -372,46 +378,7 @@ void GalleriaVirtuale::rebuildAfterSearch(DeepPtr<Opera>& op, bool &showFirstIma
   }
 }
 
-void GalleriaVirtuale::showList(const QString& str, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
+void GalleriaVirtuale::showList(bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
   bool showFirstImage = true;
-  if (str == "Tutte") updateList(str, typeSale, opereToShow);
-  else if (str == "Quadro") {
-    for (int i = 0; i < opereToShow.getSize(); ++i) {
-	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
-    }
-  } else if (str == "Scultura") {
-    for (int i = 0; i < opereToShow.getSize(); ++i) {
-       rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
-    }
-  } else if (str == "Mosaico") {
-    for (int i = 0; i < opereToShow.getSize(); ++i) {
-	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
-    }
-  } else if (str == "Dipinto") {
-    for (int i = 0; i < opereToShow.getSize(); ++i) {
-	rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
-    }
-  }
-}
-
-void GalleriaVirtuale::updateList(const QString& typeOpera, bool typeSale, Container<DeepPtr<Opera>> opereToShow) {
-  for (int i = 0; i < opereToShow.getSize(); i++) {
-    if (!typeSale) operaList->addItem(new QListWidgetItem(opereToShow[i]->getName()));
-    else if (typeSale) if (opereToShow[i]->isOnSale()) operaList->addItem(new QListWidgetItem(opereToShow[i]->getName()));
-  }
-  if (operaList->count() > 0) {
-    auto deepOp = controller->searchByTpeNameSale(typeOpera, operaList->item(0)->text(), showBox->currentText() == "No" ? false : true);
-    updateMidLayout(midInfoLayout, deepOp[0]);
-  } else {
-    operaImg.load(":/img/noOpera.jpg");
-    operaLabel->setPixmap(operaImg);
-    operaImageLayout->update();
-    resetLayout(midInfoLayout);
-    authorInfoLayout = new QFormLayout;
-    operaInfoLayout = new QFormLayout;
-    galleryInfoLayout = new QFormLayout;
-    authorInfoLayout->addRow("Attenzione ", new QLabel("Nessuna opera in mostra"));
-    updateForm();
-    mainLayout->update();
-  }
+  for (int i = 0; i < opereToShow.getSize(); ++i) rebuildAfterSearch(opereToShow[i], showFirstImage, typeSale);
 }

@@ -79,11 +79,12 @@ private:
   void createBottomLayout(); // RICERCA -- CATEGORIA -- RESET
   void changeListener();
   void buildList(const QString&, const QString&, bool);
-  void showList(const QString&, bool, Container<DeepPtr<Opera>>);
+  void showList(bool, Container<DeepPtr<Opera>>);
   void updateList(const QString&, bool, Container<DeepPtr<Opera>>);
   void rebuildAfterSearch(DeepPtr<Opera>&, bool&, bool);
   void updateMidLayout(QHBoxLayout*, DeepPtr<Opera>&);
   void insertImg(const QString&);
+  void showEmptyList();
   // Metodi costanti
   void resetLayout(QLayout*) const;
   void inserisciDescrizioneOpera(DeepPtr<Opera>&) const;
