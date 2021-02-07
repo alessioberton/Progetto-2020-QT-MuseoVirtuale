@@ -1,47 +1,41 @@
 <RCC>
     <qresource prefix="/">
-		<!-- Icona/Opere -->
+        <!-- Icona/Opere -->
         <file>img/appIcona.jpg</file>
-		<file>img/noOpera.jpg</file>
-		
-		<!-- Sculture -->
-        <file>img/sculturaMarmo.jpg</file>	
-        <file>img/sculturaMarmo2.jpg</file>	
-		<file>img/sculturaAvorio.jpg</file>	
-		<file>img/sculturaPietra.jpg</file>	
-		<file>img/sculturaPietra2.jpg</file>	
-		<file>img/sculturaArgilla.jpg</file>	
-		
-		<!-- Dipinti -->
-		<file>img/dipintoAcquerello.jpg</file>	
-		<file>img/dipintoAcquerello2.jpg</file>	
-		<file>img/dipintoOlio.jpg</file>	
-		<file>img/dipintoOlio2.jpg</file>	
-		<file>img/dipintoCera.jpg</file>	
-		<file>img/dipintoCera2.jpg</file>	
-		<file>img/dipintoPastello.jpg</file>	
-		<file>img/dipintoPastello2.jpg</file>	
-
-		<!-- Mosaici -->
-		<file>img/mosaicoOro.jpg</file>
-		<file>img/mosaicoPietra.jpg</file>
-		<file>img/mosaicoVetro.jpg</file>
-		<file>img/mosaicoVetro2.jpg</file>
-		<file>img/mosaicoMarmo.jpg</file>
-		<file>img/mosaicoMarmo2.jpg</file>
-		
-		<!-- Quadri -->
-		<file>img/quadroOro.jpg</file>
-		<file>img/quadroRame.jpg</file>
-		<file>img/quadroRame2.jpg</file>
-		<file>img/quadroLegno.jpg</file>
-		<file>img/quadroLegno2.jpg</file>
-		<file>img/quadroLegno3.jpg</file>
-		<file>img/quadroArgento.jpg</file>
-		<file>img/quadroCeramica.jpg</file>
-		<file>img/quadroCeramica2.jpg</file>
-
-		
+        <file>img/noOpera.jpg</file>
+        <!-- Sculture -->
+        <file>img/sculturaMarmo.jpg</file>
+        <file>img/sculturaMarmo2.jpg</file>
+        <file>img/sculturaAvorio.jpg</file>
+        <file>img/sculturaPietra.jpg</file>
+        <file>img/sculturaPietra2.jpg</file>
+        <file>img/sculturaArgilla.jpg</file>
+        <!-- Dipinti -->
+        <file>img/dipintoAcquerello.jpg</file>
+        <file>img/dipintoAcquerello2.jpg</file>
+        <file>img/dipintoOlio.jpg</file>
+        <file>img/dipintoOlio2.jpg</file>
+        <file>img/dipintoCera.jpg</file>
+        <file>img/dipintoCera2.jpg</file>
+        <file>img/dipintoPastello.jpg</file>
+        <file>img/dipintoPastello2.jpg</file>
+        <!-- Mosaici -->
+        <file>img/mosaicoOro.jpg</file>
+        <file>img/mosaicoPietra.jpg</file>
+        <file>img/mosaicoVetro.jpg</file>
+        <file>img/mosaicoVetro2.jpg</file>
+        <file>img/mosaicoMarmo.jpg</file>
+        <file>img/mosaicoMarmo2.jpg</file>
+        <!-- Quadri -->
+        <file>img/quadroOro.jpg</file>
+        <file>img/quadroRame.jpg</file>
+        <file>img/quadroRame2.jpg</file>
+        <file>img/quadroLegno.jpg</file>
+        <file>img/quadroLegno2.jpg</file>
+        <file>img/quadroLegno3.jpg</file>
+        <file>img/quadroArgento.jpg</file>
+        <file>img/quadroCeramica.jpg</file>
+        <file>img/quadroCeramica2.jpg</file>
         <!-- Dati -->
         <file>data/data.json</file>
     </qresource>

@@ -31,7 +31,7 @@ public:
   virtual Opera *clone() const = 0;
   // Ritorna il nome dell' oggetto istanziato
   virtual QString getCategory() const = 0;
-  // Opera ha valore se Dipinto fatta di olio/cera/pastelli o Scultura in marmo/terracotta/pietra/avorio
+  // Opera ha valore se Dipinto fatta di olio/cera/pastelli o Scultura in marmo/terracotta/pietra/avorio e quadro fartto in Oro/Ceramica/Rame
   virtual bool hasValue() const = 0;
   // il prezzo dell' Opera dipende dal valore, se è in vendita, dal suo materiale, dalle dimensioni
   virtual double calcuateRealPrice() const;

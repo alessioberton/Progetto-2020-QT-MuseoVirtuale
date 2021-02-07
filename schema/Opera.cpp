@@ -16,9 +16,9 @@ double Opera::calcuateRealPrice() const {
 }
 
 bool Opera::isOnSale() const {
-  const auto creationSculturaPlusTen = getCreationDate().addYears(10).toTime_t();
-  const auto currentaDate = QDateTime::currentDateTimeUtc().toTime_t();
-  return creationSculturaPlusTen >= currentaDate && hasValue();
+  const auto creationSculturaPlusTen = getCreationDate().addYears(10);
+  const auto currentaDate = QDateTime::currentDateTimeUtc();
+  return hasValue() && creationSculturaPlusTen >= currentaDate;
 }
 
 QString Opera::getImgPath() const { return imgPath; }

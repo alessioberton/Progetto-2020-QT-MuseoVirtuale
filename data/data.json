@@ -2,125 +2,120 @@
   {
     "author": "Alessio Berton",
     "category": "Quadro",
-    "creationDate": "26/12/2012",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "21/06/2012",
+    "expositionDate": "22/05/2020",
+    "height": 50,
     "imgPath": ":/img/quadroArgento.jpg",
     "name": "QuadroArgento",
     "quadroMaterial": "Argento",
     "dipintoType": "Olio",
-    "width": 60
+    "width": 140
   },
   {
     "author": "Riccardo Parlato",
     "category": "Quadro",
-    "creationDate": "26/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "09/10/2014",
+    "expositionDate": "29/11/2020",
+    "height": 220,
     "imgPath": ":/img/quadroOro.jpg",
     "name": "QuadroOro",
     "quadroMaterial": "Oro",
     "dipintoType": "Acquerelli",
-    "width": 60
+    "width": 100
   },
   {
     "author": "Laura Confelle",
     "category": "Quadro",
-    "creationDate": "26/12/1990",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "26/12/2008",
+    "expositionDate": "12/01/2020",
+    "height": 53,
     "imgPath": ":/img/quadroRame.jpg",
     "name": "QuadroRame",
     "quadroMaterial": "Rame",
     "dipintoType": "Pastelli",
-    "width": 60
+    "width": 100
   },
   {
     "author": "Maria Lepanta",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "17/06/2017",
+    "expositionDate": "13/07/2020",
+    "height": 32,
     "imgPath": ":/img/quadroRame2.jpg",
     "name": "QuadroRame2",
     "quadroMaterial": "Rame",
     "dipintoType": "Pastelli",
-    "width": 60
+    "width": 98
   },
   {
     "author": "Eusebio Calate",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "13/06/2000",
+    "expositionDate": "01/04/2020",
+    "height": 123,
     "imgPath": ":/img/quadroLegno.jpg",
     "name": "QuadroLegno",
     "quadroMaterial": "Legno",
     "dipintoType": "Olio",
-    "width": 60
+    "width": 156
   },
   {
     "author": "Maria Lepanta",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "06/01/2014",
+    "expositionDate": "03/02/2020",
+    "height": 77,
     "imgPath": ":/img/quadroLegno2.jpg",
     "name": "QuadroLegno2",
     "quadroMaterial": "Legno",
     "dipintoType": "Acquerelli",
-    "width": 60
+    "width": 134
   },
   {
     "author": "Riccardo Parlato",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "12/10/2004",
+    "expositionDate": "15/07/2020",
+    "height": 89,
     "imgPath": ":/img/quadroLegno3.jpg",
     "name": "QuadroLegno3",
     "quadroMaterial": "Legno",
     "dipintoType": "Cera",
-    "width": 60
+    "width": 200
   },
   {
     "author": "Alessio Berton",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "24/12/2013",
+    "expositionDate": "10/05/2027",
+    "height": 65,
     "imgPath": ":/img/quadroCeramica.jpg",
     "name": "QuadroCeramica",
     "quadroMaterial": "Ceramica",
-    "dipintoType": "Acquerelli",
-    "width": 60
+    "dipintoType": "Cera",
+    "width": 120
   },
   {
     "author": "Riccardo Parlato",
     "category": "Quadro",
-    "creationDate": "24/12/2010",
-    "expositionDate": "10/05/2020",
-    "height": 120,
+    "creationDate": "14/09/1999",
+    "expositionDate": "14/07/2018",
+    "height": 60,
     "imgPath": ":/img/quadroCeramica2.jpg",
     "name": "QuadroCeramica2",
     "quadroMaterial": "Ceramica",
     "dipintoType": "Olio",
-    "width": 60
+    "width": 120
   },
   
   
-  
-  
-  
-  
-  
-  
+
   {
     "author": "Eusebio Calate",
     "category": "Scultura",
     "creationDate": "10/05/1503",
     "sculturaMaterial": "Marmo",
-    "expositionDate": "10/05/2008",
+    "expositionDate": "10/11/2008",
     "height": 517,
     "imgPath": ":/img/sculturaMarmo.jpg",
     "name": "SculturaMarmo",
@@ -129,10 +124,10 @@
   {
     "author": "Riccardo Parlato",
     "category": "Scultura",
-    "creationDate": "10/05/1998",
+    "creationDate": "06/11/2017",
     "sculturaMaterial": "Marmo",
-    "expositionDate": "10/05/2008",
-    "height": 100,
+    "expositionDate": "12/04/2020",
+    "height": 456,
     "imgPath": ":/img/sculturaMarmo2.jpg",
     "name": "SculturaMarmo2",
     "width": 100
@@ -143,7 +138,7 @@
     "creationDate": "10/05/1998",
     "sculturaMaterial": "Avorio",
     "expositionDate": "10/05/2008",
-    "height": 100,
+    "height": 300,
     "imgPath": ":/img/sculturaAvorio.jpg",
     "name": "SculturaAvorio",
     "width": 190
@@ -151,59 +146,55 @@
   {
     "author": "Riccardo Parlato",
     "category": "Scultura",
-    "creationDate": "10/05/1998",
+    "creationDate": "11/02/2019",
     "sculturaMaterial": "Pietra",
-    "expositionDate": "10/05/2008",
-    "height": 100,
+    "expositionDate": "30/12/2019",
+    "height": 444,
     "imgPath": ":/img/sculturaPietra.jpg",
     "name": "SculturaPietra",
-    "width": 100
+    "width": 167
   },
   {
     "author": "Maria Lepanta",
     "category": "Scultura",
-    "creationDate": "10/05/1998",
+    "creationDate": "10/09/2009",
     "sculturaMaterial": "Pietra",
-    "expositionDate": "10/05/2008",
-    "height": 100,
+    "expositionDate": "20/05/2016",
+    "height": 200,
     "imgPath": ":/img/sculturaPietra2.jpg",
     "name": "SculturaPietra2",
-    "width": 100
+    "width": 135
   },
   {
     "author": "Eusebio Calate",
     "category": "Scultura",
-    "creationDate": "10/05/1998",
+    "creationDate": "16/07/2006",
     "sculturaMaterial": "Argilla",
-    "expositionDate": "10/05/2008",
-    "height": 100,
+    "expositionDate": "06/02/2010",
+    "height": 411,
     "imgPath": ":/img/sculturaArgilla.jpg",
     "name": "SculturaArgilla",
-    "width": 100
+    "width": 231
   },
   
   
-  
-
-
-
   
   {
     "author": "Riccardo Parlato",
     "category": "Dipinto",
-    "creationDate": "10/05/2017",
-    "expositionDate": "10/05/2017",
-    "height": 90,
+    "creationDate": "13/02/2017",
+    "expositionDate": "06/07/2020",
+    "height": 167,
     "imgPath": ":/img/dipintoAcquerello.jpg",
     "name": "DipintoAcquerello",
     "dipintoType": "Acquerelli",
-    "width": 130
+    "width": 90
   },
   {
     "author": "Eusebio Calate",
     "category": "Dipinto",
-    "creationDate": "10/04/2018",
-    "expositionDate": "10/05/2008",
+    "creationDate": "02/03/2007",
+    "expositionDate": "12/06/2009",
     "height": 120,
     "imgPath": ":/img/dipintoAcquerello2.jpg",
     "name": "DipintoAcquerello2",
@@ -213,19 +204,19 @@
   {
     "author": "Maria Lepanta",
     "category": "Dipinto",
-    "creationDate": "10/05/1998",
-    "expositionDate": "10/05/2008",
-    "height": 342,
+    "creationDate": "22/01/2011",
+    "expositionDate": "01/09/2013",
+    "height": 230,
     "imgPath": ":/img/dipintoOlio.jpg",
     "name": "DipintoOlio",
 	"dipintoType": "Olio",
-    "width": 172
+    "width": 150
   },
   {
     "author": "Alessio Berton",
     "category": "Dipinto",
-    "creationDate": "10/05/1998",
-    "expositionDate": "10/05/2008",
+    "creationDate": "25/04/1990",
+    "expositionDate": "13/03/1999",
     "height": 342,
     "imgPath": ":/img/dipintoOlio2.jpg",
     "name": "DipintoOlio2",
@@ -235,8 +226,8 @@
   {
     "author": "Laura Confelle",
     "category": "Dipinto",
-    "creationDate": "10/05/2017",
-    "expositionDate": "10/05/2017",
+    "creationDate": "14/02/2017",
+    "expositionDate": "28/11/2018",
     "height": 90,
     "imgPath": ":/img/dipintoCera.jpg",
     "name": "DipintoCera",
@@ -246,108 +237,103 @@
   {
     "author": "Eusebio Calate",
     "category": "Dipinto",
-    "creationDate": "10/04/2018",
-    "expositionDate": "10/05/2008",
-    "height": 120,
+    "creationDate": "15/11/2018",
+    "expositionDate": "12/07/2019",
+    "height": 200,
     "imgPath": ":/img/dipintoCera2.jpg",
     "name": "DipintoCera2",
     "dipintoType": "Cera",
-    "width": 150
+    "width": 132
   },
   {
     "author": "Alessio Berton",
     "category": "Dipinto",
-    "creationDate": "10/05/1998",
-    "expositionDate": "10/05/2008",
-    "height": 342,
+    "creationDate": "23/06/1999",
+    "expositionDate": "08/02/2017",
+    "height": 77,
     "imgPath": ":/img/dipintoPastello.jpg",
     "name": "DipintoPastello",
 	"dipintoType": "Pastelli",
-    "width": 172
+    "width": 123
   },
   {
     "author": "Laura Confelle",
     "category": "Dipinto",
-    "creationDate": "10/05/1998",
-    "expositionDate": "10/05/2008",
-    "height": 342,
+    "creationDate": "06/03/2018",
+    "expositionDate": "19/07/2020",
+    "height": 145,
     "imgPath": ":/img/dipintoPastello2.jpg",
     "name": "DipintoPastello2",
 	"dipintoType": "Pastelli",
-    "width": 172
+    "width": 89
   },
   
   
-  
-  
-  
-  
- 
   
   {
     "author": "Riccardo Parlato",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
-    "height": 430,
+    "creationDate": "13/12/2003",
+    "expositionDate": "15/08/2019",
+    "height": 238,
     "imgPath": ":/img/mosaicoOro.jpg",
     "name": "MosaicoOro",
     "mosaicoMaterial": "Oro",
-    "width": 230
+    "width": 432
   },
   {
     "author": "Maria Lepanta",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
-    "height": 430,
+    "creationDate": "05/11/2008",
+    "expositionDate": "21/05/2020",
+    "height": 432,
     "imgPath": ":/img/mosaicoPietra.jpg",
     "name": "MosaicoPietra",
     "mosaicoMaterial": "Pietra",
-    "width": 230
+    "width": 234
   },
   {
     "author": "Alessio Berton",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
-    "height": 430,
+    "creationDate": "27/03/2017",
+    "expositionDate": "07/01/2019",
+    "height": 555,
     "imgPath": ":/img/mosaicoVetro.jpg",
     "name": "MosaicoVetro",
     "mosaicoMaterial": "Vetro",
-    "width": 230
+    "width": 333
   },
   {
     "author": "Eusebio Calate",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
-    "height": 430,
+    "creationDate": "21/08/2012",
+    "expositionDate": "30/04/2019",
+    "height": 345,
     "imgPath": ":/img/mosaicoVetro2.jpg",
     "name": "MosaicoVetro2",
     "mosaicoMaterial": "Vetro",
-    "width": 230
+    "width": 501
   },
   {
     "author": "Laura Confelle",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
-    "height": 430,
+    "creationDate": "04/04/2005",
+    "expositionDate": "15/02/2009",
+    "height": 222,
     "imgPath": ":/img/mosaicoMarmo.jpg",
     "name": "MosaicoMarmo",
     "mosaicoMaterial": "Marmo",
-    "width": 230
+    "width": 276
   },
   {
     "author": "Alessio Berton",
     "category": "Mosaico",
-    "creationDate": "10/05/2013",
-    "expositionDate": "10/05/2017",
+    "creationDate": "10/11/2013",
+    "expositionDate": "23/09/2017",
     "height": 430,
     "imgPath": ":/img/mosaicoMarmo2.jpg",
     "name": "MosaicoMarmo2",
     "mosaicoMaterial": "Marmo",
-    "width": 230
+    "width": 400
   }
 ]

@@ -302,9 +302,12 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(DeepPtr<Opera>& singleOpera) co
   infoOpera->setStyleSheet("font-weight: bold; color: black");
   QLabel* infoMostra = new QLabel("Informazioni Galleria");
   infoMostra->setStyleSheet("font-weight: bold; color: black");
+
   operaInfoLayout->addRow(infoOpera);
   authorInfoLayout->setContentsMargins(100,0,0,0);
   authorInfoLayout->addRow(infoAuthor);
+  authorInfoLayout->addRow("Nome Autore: ", new QLabel(singleOpera->getAuthor()));
+  authorInfoLayout->addRow("Opere esposte dall' autore: ", new QLabel(QString::number(controller->countSameAuthor(singleOpera->getAuthor()))));
   galleryInfoLayout->setContentsMargins(100,0,0,0);
   galleryInfoLayout->addRow(infoMostra);
   galleryInfoLayout->addRow("Data creazione: ", new QLabel(locale.toString(singleOpera->getCreationDate(), format)));
@@ -354,8 +357,6 @@ void GalleriaVirtuale::inserisciDescrizioneOpera(DeepPtr<Opera>& singleOpera) co
       operaInfoLayout->addRow("Tipo pittura: ", new QLabel(dipinto->getDipintoTypeString()));
     }
   }
-  authorInfoLayout->addRow("Nome Autore: ", new QLabel(singleOpera->getAuthor()));
-  authorInfoLayout->addRow("Opere esposte dall' autore: ", new QLabel(QString::number(controller->countSameAuthor(singleOpera->getAuthor()))));
 }
 
 void GalleriaVirtuale::buildList(const QString& nameStr, const QString& showStr, bool typeSale) {
